@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Terminal</title>
+
+<style>
+    body {
+        background: #000;
+        color: #00ff55;
+        font-family: "Courier New", monospace;
+        padding: 30px;
+        font-size: 18px;
+        white-space: pre-wrap;
+    }
+</style>
+
+</head>
+<body>
+
+<div id="output"></div>
+
+<!-- TYPEWRITER SOUND -->
+<audio id="typeSound">
+    <source src="https://www.soundjay.com/mechanical/sounds/mechanical-keyboard-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text = 
+`> Initializing birthday protocol...
+> Connecting to SYED-AZZIM-DEVICE_001...
+> Status: Connected ✔
+
+> Checking system…
+  - Height: OK  
+  - Handsomeness: OVER THE LIMIT  
+  - Vape Usage: ⚠ DETECTED (but forgiven)  
+  - Stress Level: 87%  
+  - Need Birthday Wish: 100%
+
+> Loading surprise...
+██████░░ 83%  
+████████░ 95%  
+██████████ 100% COMPLETE 🎉
+
+---------------------------------------------
+🎉 *HAPPY BIRTHDAY, SYED!* 🎉
+
+Semoga Allah permudahkan urusan Syed,
+kuatkan hati,
+luaskan rezeki,
+dan bagi ketenangan yang tak putus-putus.
+
+> Press ENTER in your heart to continue.
+---------------------------------------------`;
+
+let i = 0;
+
+function type() {
+    if (i < text.length) {
+        document.getElementById("output").textContent += text.charAt(i);
+
+        // PLAY SOUND EVERY FEW CHARACTERS
+        if (text.charAt(i) !== " " && text.charAt(i) !== "\n") {
+            const snd = document.getElementById("typeSound");
+            snd.currentTime = 0;
+            snd.play();
+        }
+
+        i++;
+        setTimeout(type, 30);
+    }
+}
+
+type();
+</script>
+
+</body>
+</html>

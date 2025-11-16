@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Birthday Terminal</title>
+<title>Terminal Glitch Birthday</title>
 
 <style>
-    body {
-        background: #000;
-        color: #00ff55;
-        font-family: "Courier New", monospace;
-        padding: 30px;
-        font-size: 18px;
-        white-space: pre-wrap;
-    }
+body {
+  background: black;
+  color: #00ff55;
+  font-family: "Courier New", monospace;
+  padding: 25px;
+  white-space: pre-wrap;
+}
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  20% { text-shadow: -2px 0 blue; }
+  40% { text-shadow: 2px 0 green; }
+  60% { text-shadow: -2px 0 yellow; }
+  80% { text-shadow: 3px 0 purple; }
+  100% { text-shadow: -3px 0 cyan; }
+}
 </style>
 
 </head>
@@ -20,58 +30,38 @@
 
 <div id="output"></div>
 
-<!-- TYPEWRITER SOUND -->
-<audio id="typeSound">
-    <source src="https://www.soundjay.com/mechanical/sounds/mechanical-keyboard-1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 const text = 
-`> Initializing birthday protocol...
-> Connecting to SYED-AZZIM-DEVICE_001...
-> Status: Connected ✔
+`> System Booting...
+> Accessing SYED_AZZIM files...
+> WARNING: too handsome. Adjust brightness.
 
-> Checking system…
-  - Height: OK  
-  - Handsomeness: OVER THE LIMIT  
-  - Vape Usage: ⚠ DETECTED (but forgiven)  
-  - Stress Level: 87%  
-  - Need Birthday Wish: 100%
-
-> Loading surprise...
-██████░░ 83%  
-████████░ 95%  
-██████████ 100% COMPLETE 🎉
+> Loading birthday message...
+████░░░ 40%
+██████░ 72%
+████████ 100%
 
 ---------------------------------------------
-🎉 *HAPPY BIRTHDAY, SYED!* 🎉
+🎉 HAPPY BIRTHDAY SYED! 🎉
 
-Semoga Allah permudahkan urusan Syed,
-kuatkan hati,
-luaskan rezeki,
-dan bagi ketenangan yang tak putus-putus.
+Semoga Allah murahkan rezeki,
+tenangkan hati,
+dan bagi kekuatan melalui apa saja.
 
-> Press ENTER in your heart to continue.
----------------------------------------------`;
+You deserve peace & happiness.
+
+---------------------------------------------
+> End of transmission.`;
 
 let i = 0;
-
 function type() {
-    if (i < text.length) {
-        document.getElementById("output").textContent += text.charAt(i);
-
-        // PLAY SOUND EVERY FEW CHARACTERS
-        if (text.charAt(i) !== " " && text.charAt(i) !== "\n") {
-            const snd = document.getElementById("typeSound");
-            snd.currentTime = 0;
-            snd.play();
-        }
-
-        i++;
-        setTimeout(type, 30);
-    }
+  if (i < text.length) {
+    document.getElementById("output").innerHTML += 
+      <span class="glitch">${text.charAt(i)}</span>;
+    i++;
+    setTimeout(type, 35);
+  }
 }
-
 type();
 </script>
 
